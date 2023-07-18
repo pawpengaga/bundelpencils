@@ -1,0 +1,7 @@
+- Gemas necesarias añadidas
+
+- rails g controller homes index
+- rails g devise:install
+- rails g devise client name pfp phone role:integer
+- rails g scaffold article title description:text requirements profit client:references
+- rails g model postulations description:text client:references article:references
