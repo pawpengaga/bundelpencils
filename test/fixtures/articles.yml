@@ -3,13 +3,17 @@
 one:
   title: MyString
   description: MyText
-  requirements: MyText
-  profit: 1
-  client: one
+  requirements: MyString
+  profit: MyString
 
 two:
   title: MyString
   description: MyText
-  requirements: MyText
-  profit: 1
-  client: two
+  requirements: MyString
+  profit: MyString
+
+three:
+  title: MyString
+  description: MyText
+  requirements: MyString
+  profit: MyString

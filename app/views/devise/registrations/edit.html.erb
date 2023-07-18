@@ -26,6 +26,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field mb-3">
+    <%= f.label :name, "Nombre de usuario", class: "mb-2 fw-bold" %><br />
+    <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
+  </div>
+
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>

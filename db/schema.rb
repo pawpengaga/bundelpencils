@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_085619) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_093423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,47 +47,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_085619) do
     t.text "description"
     t.text "requirements"
     t.integer "profit"
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_articles_on_client_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.bigint "user_id", null: false
-    t.bigint "publication_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["publication_id"], name: "index_comments_on_publication_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "publications", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_publications_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username"
+    t.string "name"
+    t.string "pfp"
+    t.integer "phone"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar"
-    t.integer "role"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_clients_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
+  create_table "postulations", force: :cascade do |t|
+    t.text "description"
+    t.bigint "client_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_postulations_on_article_id"
+    t.index ["client_id"], name: "index_postulations_on_client_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "publications"
-  add_foreign_key "comments", "users"
-  add_foreign_key "publications", "users"
+  add_foreign_key "articles", "clients"
+  add_foreign_key "postulations", "articles"
+  add_foreign_key "postulations", "clients"
 end

@@ -1,0 +1,77 @@
+:root{
+    --accent: rgb(6, 200, 214);
+    --seccon: rgb(6, 177, 177);
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Belanosima', sans-serif; */
+}
+
+a{
+    color: var(--accent);
+}
+
+.myalerts{
+    position: fixed;
+    bottom: 0;
+}
+
+
+/*************************/
+
+.mylinks{
+    vertical-align: middle;
+}
+
+.mywidth{
+    width: 13%;
+}
+
+.mylinks:hover{
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.mybtn{
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.mybtn:hover{
+    background-color: var(--seccon);
+    color: white;
+    border-color: var(--seccon);
+}
+
+.mypfp{
+    width: 4rem;
+}
+
+/* /--------------------------------------- */
+
+/* .btn.active {
+    background-color: #007bff;
+    color: white;
+  } */
+
+
+  .mysession{
+    width: 2rem;
+}
+
+.user-reverlator{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.myalertshehe{
+    color: var(--accent);
+}
+
+#mycontainer{
+    padding-left: 25rem;
+    padding-right: 25rem;
+}

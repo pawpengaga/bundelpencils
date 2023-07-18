@@ -8,6 +8,11 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field mb-3">
+    <%= f.label :name, "Nombre de usuario", class: "mb-2 fw-bold" %><br />
+    <%= f.text_field :name, value: "user#{rand(43..988)}", autocomplete: "new-name", class: "form-control" %>
+  </div>
+
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
