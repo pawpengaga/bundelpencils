@@ -13,6 +13,7 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Sueldo: <%= number_to_currency(article.profit, precision: 0)%> pesos. (CLP)</li>
+          <li class="list-group-item">N° Postulantes: <%= article.postulations.count%></li>
         </ul>
         <div class="card-body">
           <%= link_to "Ver oferta", article, class: "card-link btn mybtn" %>
