@@ -1,17 +1,87 @@
 <div id="<%= dom_id postulation %>">
-    <p>
-      <strong>Title:</strong>
-      <%= postulation.article.title %>
-    </p>
+
+
+    <div class="mb-4">
+        <h1 class="display-6">Postulación para: <%= postulation.article.title %></h1>
+        <p class="m-0">
+            <span class="fw-bold fs-5"><%= postulation.client.name %></span> <br>
+            <span class="fw-bold">Postulación </span> #<%= postulation.id %>
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-stripped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="4" class="text-center py-2">Datos de postulación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="1">ID</th>
+                        <th colspan="3">Descripción</th>
+                    </tr>
+                    <tr>
+                        <td colspan="1"><%= postulation.id %></td>
+                        <td colspan="3"><%= postulation.description %></td>
+                    </tr>
+                </tbody>
+
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="4" class="text-center py-2">Datos de postulante</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Nombre completo</th>
+                        <th>Correo electrónico</th>
+                        <th>Número telefónico</th>
+                    </tr>
+                    <tr>
+                        <td><%= image_tag postulation.client.pfp, class:"mypfp rounded-circle" %></td>
+                        <td><%= postulation.client.name %></td>
+                        <td><%= postulation.client.email %></td>
+                        <td>
+                            <% if postulation.client.phone %>
+                                <%= number_to_phone(postulation.client.phone)  %>
+                            <%else%>
+                                -NO PRESENTA-
+                            <%end%>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+              
+        </div>
+    </div>
     
-    <h3>Adjuntos</h3>
+    <p class="fs-4 mt-4">Documentos adjuntos</p>
     
     <% if postulation.pictures.present? %>
 
-        <div id="images-section" class="mb-5">
-            <% postulation.pictures.each do |u| %>
-            <%= image_tag u, class:"d-block mb-3" %>
-            <%end%>
+        <div class="col-8">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Ver adjuntos
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body text-center">
+            
+                        <div id="images-section" class="mb-5">
+                            <% postulation.pictures.each do |u| %>
+                            <%= image_tag u, class:"mb-3 w-50" %>
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
 
     <%else%>

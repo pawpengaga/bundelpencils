@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     registrations: 'clients/registrations'
   }
 
+  namespace :admin do
+    get 'clients/new', to: 'clients#new', as: :new_client
+    post 'clients', to: 'clients#create', as: :clients
+  end
+
   resources :postulations
 
   resources :articles do

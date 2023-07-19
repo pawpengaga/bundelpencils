@@ -21,7 +21,7 @@
       <h2>Postular a este cargo</h2>
       <div class="col-12 mt-3">
         <%= f.hidden_field :article_id, value: @article.id %>
-        <%= f.hidden_field :description, value: "Postulación hecha por #{current_client.name}, para el puesto #{@article.title}" %>
+        <%= f.hidden_field :description, value: "Postulación hecha por #{current_client.name}, para el puesto de #{@article.title}" %>
 
         <div class="mb-3 text-start">
           <%= f.label :pictures, "ADJUNTOS. Currículum, certificados, etc. (Opcional)", style: "display: block", class:"fw-bold mb-2" %>

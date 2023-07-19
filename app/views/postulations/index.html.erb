@@ -1,7 +1,7 @@
-<h1 class="mb-5">Comentarios de <%= current_client.name %></h1>
+<h1 class="mb-5">Postulaciones de <%= current_client.name %></h1>
 
 <% if current_client.postulations.empty? %>
-  <p>No hay comentarios...</p>
+  <p>No hay postulaciones...</p>
 <% end %>
 
 <% @postulations.reverse.each do |postulation| %>
@@ -11,13 +11,11 @@
     <div class="col-1 text-center"><%=image_tag postulation.client.pfp, class: "mypfp rounded-circle" %></div>
   <%end%>
   <div class="col-10">
-    <span class="fw-bold"><%= postulation.client.name%></span> <span class="fst-italic">Postulado hace <%= distance_of_time_in_words(postulation.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
+    <span class="fw-bold"><%= postulation.client.name%></span> <span class="fst-italic">Postulaste <%= distance_of_time_in_words(postulation.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
     <%= postulation.description %>
     <p class="mt-1">
-      <%= link_to "Ver entrada", article_path(postulation.article) %>
-    </p>
-    <p>
-      <%= link_to "Show this article", postulation %>
+      <%= link_to "Ver oferta", article_path(postulation.article) %> |
+      <%= link_to "Ver detalle de postulación", postulation %>
     </p>
     <% if current_client.role == 'admin' %>
     <p class="mt-1">

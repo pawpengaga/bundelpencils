@@ -1,27 +1,23 @@
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
+    <%= article.title %> <br> <br>
 
-  <p>
-    <strong>Requirements:</strong>
-    <%= article.requirements %>
-  </p>
 
-  <p>
-    <strong>Profit:</strong>
-    <%= article.profit %>
-  </p>
 
-  <p>
-    <strong>Client:</strong>
+    <%= article.description %> <br> <br>
+
+
+
+    <%= article.requirements %> <br> <br>
+ 
+
+
+
+    <%= number_to_currency(article.profit, precision: 0) %> <br> <br>
+
+
+
     <%= article.client_id %>
-  </p>
+
 
 </div>
