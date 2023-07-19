@@ -6,6 +6,9 @@ class PostulationsController < ApplicationController
         @client = Client.find(params[:client_id])
         @postulations = @client.postulations
     end
+
+    def show
+    end
   
     def create
         @article = Article.find(params[:postulation][:article_id])
@@ -48,6 +51,6 @@ class PostulationsController < ApplicationController
     end
 
     def postulation_params
-        params.require(:postulation).permit(:description,:client_id,:article_id)
+        params.require(:postulation).permit(:description,:client_id,:article_id, pictures: [])
     end
 end

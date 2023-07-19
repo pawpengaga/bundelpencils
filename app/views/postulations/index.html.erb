@@ -16,6 +16,9 @@
     <p class="mt-1">
       <%= link_to "Ver entrada", article_path(postulation.article) %>
     </p>
+    <p>
+      <%= link_to "Show this article", postulation %>
+    </p>
     <% if current_client.role == 'admin' %>
     <p class="mt-1">
     <%= button_to article_postulation_path(@article, @postulation), method: :delete, class: "btn mybtn px-4 py-2 mt-3" do%>

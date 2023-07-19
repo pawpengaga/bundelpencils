@@ -6,7 +6,7 @@ class Client < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :postulations, dependent: :destroy
-  has_one_attached :pfp, dependent: :destroy
+  has_one_attached :pfp, dependent: :purge
 
   enum :role, [:user, :admin]
 
