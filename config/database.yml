@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: pruebaPfM6ErickRivera_production
-  username: pruebaPfM6ErickRivera
-  password: <%= ENV["PRUEBAPFM6ERICKRIVERA_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
