@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'pages/index', to: "pages#index"
+  get '/mailing', to: "pages#about"
+  get '/sorry', to: "pages#sorry"
 
   devise_for :clients, controllers: {
     sessions: 'clients/sessions',
@@ -16,10 +19,9 @@ Rails.application.routes.draw do
     resources :articles
   end
 
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "homes#index"
+  root "articles#index"
 end

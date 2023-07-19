@@ -1,1 +1,30 @@
-<h1>Heheh</h1>
+<h1 class="mb-5">Comentarios de <%= current_client.name %></h1>
+
+<% if current_client.postulations.empty? %>
+  <p>No hay comentarios...</p>
+<% end %>
+
+<% @postulations.reverse.each do |postulation| %>
+
+<div class="row">
+  <% if current_client.pfp.present? %>
+    <div class="col-1 text-center"><%=image_tag postulation.client.pfp, class: "mypfp rounded-circle" %></div>
+  <%end%>
+  <div class="col-10">
+    <span class="fw-bold"><%= postulation.client.name%></span> <span class="fst-italic">Postulado hace <%= distance_of_time_in_words(postulation.created_at, Time.now, include_seconds: true)%> ago...</span> <br>
+    <%= postulation.description %>
+    <p class="mt-1">
+      <%= link_to "Ver entrada", article_path(postulation.article) %>
+    </p>
+    <% if current_client.role == 'admin' %>
+    <p class="mt-1">
+    <%= button_to article_postulation_path(@article, @postulation), method: :delete, class: "btn mybtn px-4 py-2 mt-3" do%>
+      Eliminar postulación
+    <% end %>        
+    </p>
+  <%end%>
+  </div>
+  <hr>
+</div>
+
+<% end %>

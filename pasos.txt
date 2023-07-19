@@ -9,3 +9,8 @@
 - rails g devise:views
 - rails g devise:controllers clients
 
+----------------------
+
+aun no se han probado las postulaciones
+
+Hacer el _form

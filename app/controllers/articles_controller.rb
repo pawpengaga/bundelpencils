@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_login
 
   # GET /articles or /articles.json
   def index
@@ -9,8 +9,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
+    @postulations = @article.postulations
+    
+    if Postulation.exists?(article: @article, client: current_client)
+      @postulation = Postulation.find_by(article: @article, client: current_client)
+      @postulation_exists = true
+    else
+      @postulation = Postulation.new
+      @postulation_exists = false
+    end
   end
-
+  
   # GET /articles/new
   def new
     @article = Article.new
@@ -23,10 +33,11 @@ class ArticlesController < ApplicationController
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
+    @article.client = current_client
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
+        format.html { redirect_to article_url(@article), notice: "Cargo enviado." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,5 +78,11 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :description, :requirements, :profit, :client_id)
+    end
+
+    def require_login
+      unless current_client
+        redirect_to sorry_path
+      end
     end
 end
