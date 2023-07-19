@@ -1,0 +1,17 @@
+<div class="mt-3 ms-3">
+    
+    <div id="user-section" class=" pb-3 ms-3 d-flex align-items-center">
+        <%= image_tag current_client.pfp, class: "wi-25 rounded-circle" %>
+        <span class="fs-5 ms-3"><span class="fw-bold"><%= current_client.name %></span> (<%= current_client.role %>)</span>
+    </div>
+    <div class="mt-4">
+        <h1 class="display-6 mydafont text-center">¡Bienvenido!</h1>
+        <%= image_tag "admin.png" , class:"w-100" %>
+    </div>
+
+
+
+    <%= link_to "Publicar oferta", new_article_path, class: "btn mybtn text-center w-100 py-3 fw-bold" %>
+
+    <%= link_to "REQUERIMIENTOS DE LA PRUEBA (CLICK AQUÍ)", requerimientos_path, class: "fw-bold btn mybtn py-3 mt-4" %>
+</div>

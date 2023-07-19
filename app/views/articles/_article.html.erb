@@ -1,23 +1,20 @@
 <div id="<%= dom_id article %>">
 
-    <%= article.title %> <br> <br>
+    <div class="row d-flex">
+        <div>
+            <h1 class="mydafont mb-5"><%= article.title %></h1>
+            <div class="mb-4">
+                <p class="mydafont fs-4">Descripción del cargo</p>
+                <p><%= article.description %></p>
+            </div>
+            <div class="mb-4">
+                <p class="mydafont fs-4">Requisitos para postular</p>
+                <p><%= article.requirements %> <br> <br></p>
+            </div>
+            <p class="fw-bold">Sueldo: <%= number_to_currency(article.profit, precision: 0) %></p>
+        </div>
+    </div>
 
-
-
-    <%= article.description %> <br> <br>
-
-
-
-    <%= article.requirements %> <br> <br>
- 
-
-
-
-    <%= number_to_currency(article.profit, precision: 0) %> <br> <br>
-
-
-
-    <%= article.client_id %>
 
 
 </div>

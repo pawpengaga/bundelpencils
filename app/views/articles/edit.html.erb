@@ -1,10 +1,12 @@
-<h1>Editing article</h1>
+<h1 class="text-center display-3 mydafont">Editar publicación</h1>
 
 <%= render "form", article: @article %>
 
 <br>
 
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class="row d-flex justify-content-center">
+  <div class="col-8 text-end">
+    <%= link_to "Ver oferta", @article, class: "btn mybtn mb-4" %> <br>
+    <%= link_to "Volver", articles_path, class: "btn mybtn " %>
+  </div>
 </div>

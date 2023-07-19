@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :requirements, style: "display: block" %>
-    <%= form.text_area :requirements %>
-  </div>
-
-  <div>
-    <%= form.label :profit, style: "display: block" %>
-    <%= form.number_field :profit %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="row d-flex justify-content-center mt-4">
+    <div class="col-8">
+      <div class="mb-3">
+        <%= form.label :title, "Nombre del cargo", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_field :title , class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :description, "Descripción del cargo", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_area :description, size: "120x6", class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :requirements, "Requerimientos (Separados por punto '.')", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.text_area :requirements, size: "120x6", class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :profit, "Ingresos ($)", style: "display: block", class:"fw-bold mb-2" %>
+        <%= form.number_field :profit , class:"form-control" %>
+      </div>
+      <div class="d-flex justify-content-end">
+        <%= form.submit "Publicar oferta", class:"btn mybtn fw-bold px-4 py-2" %>
+      </div>
+    </div>
   </div>
 <% end %>

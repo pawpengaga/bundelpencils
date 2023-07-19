@@ -17,13 +17,7 @@
       <%= link_to "Ver oferta", article_path(postulation.article) %> |
       <%= link_to "Ver detalle de postulación", postulation %>
     </p>
-    <% if current_client.role == 'admin' %>
-    <p class="mt-1">
-    <%= button_to article_postulation_path(@article, @postulation), method: :delete, class: "btn mybtn px-4 py-2 mt-3" do%>
-      Eliminar postulación
-    <% end %>        
-    </p>
-  <%end%>
+  
   </div>
   <hr>
 </div>

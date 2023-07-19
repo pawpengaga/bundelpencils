@@ -1,6 +1,6 @@
 :root{
     --accent: rgb(6, 200, 214);
-    --seccon: rgb(6, 177, 177);
+    --seccon: rgb(235, 0, 76);
 }
 
 body{
@@ -11,6 +11,10 @@ body{
 a{
     color: var(--accent);
     text-decoration: none;
+}
+
+a:hover{
+    color: var(--seccon);
 }
 
 .myalerts{
@@ -77,10 +81,15 @@ a{
 }
 
 .myalertshehe{
-    color: var(--accent);
+    color: var(--seccon);
 }
 
 #mycontainer{
-    padding-left: 15rem;
-    padding-right: 15rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+
+.evil{
+    background-color: var(--seccon);
+    padding-top: 0.25rem;
 }

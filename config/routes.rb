@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/index', to: "pages#index"
+  get '/requerimientos', to: "pages#index"
   get '/mailing', to: "pages#about"
   get '/sorry', to: "pages#sorry"
 

@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<h1 class="display-5 text-center mydafont">Ingresar</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field mb-3">
+        <%= f.label :email, "Ingrese su email", class:"mb-2 fw-bold"%><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :password, "Ingrese su contraseña", class:"mb-2 fw-bold" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+      </div>
+    
+      <% if devise_mapping.rememberable? %>
+        <div class="field mb-4">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "Recuérdame" %>
+        </div>
+      <% end %>
+    
+      <div class="actions mb-4">
+        <%= f.submit "Ingresar", class: "btn mybtn w-100 py-2 fw-bold" %>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="mt-3">
+      <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+        <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name) %><br />
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    
   </div>
-<% end %>
+  <div class="col-4 ps-5">
+    <div class="border px-4 py-4 rounded">
+      <h2 class="mydafont mb-4">Credenciales</h2>
+      <h3>Para el administrador</h3>
+      <p>User: esteban@admin.com</p>
+      <p>Clave: admin123</p>
+      <h3>Para usuario</h3>
+      <p>User: user@bundel.com</p>
+      <p>Clave: usuario123</p>
+    </div>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>

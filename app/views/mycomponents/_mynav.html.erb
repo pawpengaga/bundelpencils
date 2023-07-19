@@ -14,28 +14,22 @@
             <div class="mywidth mylinks">
                 <%= image_tag 'logo.png', class: "mylogo w-100" %>
             </div>
-            <%= link_to "Inicio", root_path, class: "nav-link fw-bold px-4 mylinks ms-5 d-flex align-items-center" %>
+            <%= link_to "Inicio", root_path, class: "nav-link fw-bold px-4 mylinks ms-5 d-flex align-items-center text-dark" %>
               <% if client_signed_in? %>
-                  <%= link_to "Mi cuenta", edit_client_registration_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center"%>
+                  <%= link_to "Mi cuenta", edit_client_registration_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center text-dark"%>
                   <% if current_client.role == "user" %>
-                    <%= link_to 'Mis postulaciones', client_postulations_path(current_client), class: "nav-link fw-bold px-4 mylinks d-flex align-items-center" %>
+                    <%= link_to 'Mis postulaciones', client_postulations_path(current_client), class: "nav-link fw-bold px-4 mylinks d-flex align-items-center text-dark" %>
                   <%end%>
                   <% if current_client.role == "admin" %>
-                    <%= link_to "Añadir usuarios", admin_new_client_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center" %>
+                    <%= link_to "Añadir usuarios", admin_new_client_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center text-dark" %>
                   <%end%>
-                  <%= link_to "Salir", destroy_client_session_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center" %>
+                  <%= link_to "Salir", destroy_client_session_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center text-dark" %>
               <%else%>
-                  <%= link_to "Entrar", new_client_session_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center" %>
-                  
+                  <%= link_to "Entrar", new_client_session_path, class: "nav-link fw-bold px-4 mylinks d-flex align-items-center text-dark" %>
               <%end%>
           </div>
         </div>
       </div>
     </nav>
+    <div class="evil"></div>
     
-<% if client_signed_in? && (current_client.role == 'admin') %>
-<div class="mt-3 ms-3">
-    <p class="fw-bold">Bienvenido <%=current_client.name%></p>
-    <%= link_to "Nueva publicación", new_article_path, class: "btn mybtn fw-bold text-white mt-3" %>
-</div>
-<%end%>

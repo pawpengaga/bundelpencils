@@ -24,7 +24,23 @@
         <%= render "mycomponents/alernav" %>
       <% end %>
       <div id="mycontainer" class="mt-4 mb-5">
-        <%= yield %>
+
+        <% if client_signed_in? %>
+          <div class="row mt-5">
+            <div class="col-10 pe-5">
+              <%= yield %>
+            </div>
+            <div class="col-2 border-start">
+              <% if current_client.role == 'admin' %>
+                <%= render "mycomponents/myadminbar" %>
+              <%else%>
+                <%= render "mycomponents/mybar" %>
+              <%end%>
+            </div>
+          </div>
+        <%else%>
+          <%= yield %>
+        <%end%>
       </div>
 
     <span class="notice myalerts ms-2 text-end mb-2 myalertshehe"><%= notice %></span>

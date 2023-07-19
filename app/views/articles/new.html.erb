@@ -1,9 +1,9 @@
-<h1>New article</h1>
+<h1 class="text-center display-3 mydafont">Nueva oferta</h1>
 
 <%= render "form", article: @article %>
 
 <br>
 
-<div>
-  <%= link_to "Back to articles", articles_path %>
+<div class="row d-flex justify-content-center text-en">
+  <div class="col-8 text-end"><%= link_to "Volver", articles_path, class:"btn mybtn" %></div>
 </div>

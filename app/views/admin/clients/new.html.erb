@@ -1,23 +1,35 @@
-<h1>New User</h1>
+<h1 class="display-5 text-center mydafont">Registrar usuario</h1>
 
-<%= form_for [:admin, @client] do |f| %>
-<div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-4">
+    <%= form_for [:admin, @client] do |f| %>
+    <div class="field mb-3">
+        <%= f.label :email, "Ingrese email de usuario", class:"mb-2 fw-bold" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :name, "Nombre completo (NO PUEDE VOLVER A CAMBIARSE)", class: "mb-2 fw-bold" %><br />
+        <%= f.text_field :name, value: "Nombre #{rand(43..988)}", autocomplete: "new-name", class: "form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :password, "Ingrese contraseña", class:"mb-2 fw-bold" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+      </div>
+    
+      <div class="field mb-3">
+        <%= f.label :password_confirmation, "Confirme contraseña", class:"mb-2 fw-bold" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      </div>
+    
+      <div class="actions mb-4">
+        <%= f.submit "Ingresar", class: "btn mybtn w-100 py-2 fw-bold" %>
+      </div>
   </div>
-
-  <div class="field mb-3">
-    <%= f.label :name, "Nombre completo (NO PUEDE VOLVER A CAMBIARSE)", class: "mb-2 fw-bold" %><br />
-    <%= f.text_field :name, value: "user#{rand(43..988)}", autocomplete: "new-name", class: "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+</div>
 
 <% end %>

@@ -1,9 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
 <h1 class="display-4 text-center mydafont">Ofertas publicadas</h1>
 
-<div id="articles" class=" mt-3">
-  <%= link_to "Nueva oferta", new_article_path %>
+<div id="articles" class=" mt-5">
   <div class="row">
 
     <% @articles.each do |article| %>
@@ -11,7 +8,7 @@
       
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title"><%= article.title %></h5>
+          <h5 class="card-title mydafont fs-4"><%= article.title %></h5>
           <p class="card-text"><%= article.description %></p>
         </div>
         <ul class="list-group list-group-flush">

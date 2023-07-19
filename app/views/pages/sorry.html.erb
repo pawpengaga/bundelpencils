@@ -2,9 +2,9 @@
 
 <%else%>
   <div class="container text-center">
-    <h2 class="display-3 mb-5">¡Necesitas acceso a la plataforma!</h2>
+    <h2 class="display-4 mb-5">¡Necesitas acceso a la plataforma!</h2>
     <%= image_tag "error_404.svg" %>
-    <p class="mt-4"> Puedes solicitarlo <%= link_to "aquí", mailing_path%></p>
-    <p class="mt-3"> ¿Ya tenías acceso? Haz clic <%= link_to "aquí", new_client_session_path%> para ingresar</p>
+    <p class="mt-4 fs-2"> Haz clic <%= link_to "aquí", new_client_session_path%> para ingresar</p>
+    <p class="mt-2"> ¿No tienes acceso? Puedes solicitarlo <%= link_to "aquí", mailing_path%></p>
   </div>
 <%end%>

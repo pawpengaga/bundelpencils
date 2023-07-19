@@ -1,38 +1,46 @@
-<% if @postulation_exists %>
-    <div class="row d-flex justify-content-center text-center">
+<% if current_client.role == "admin" %>
+  <div class="row d-flex justify-content-center text-center border py-4">
+    <p class="m-0">Los administradores no pueden postular a cargos</p>
+  </div>
+<%else%>
+  <% if @postulation_exists %>
+      <div class="row d-flex justify-content-center text-center border py-4 rounded">
+          <div class="col-12">
+              <h1>Estado: Postulando</h1>
+              
+              <%= button_to "Eliminar postulación", article_postulation_path(@article, @postulation), method: :delete, class: "btn mybtn px-4 py-2 mt-3" %>
+          </div>
+      </div>
+  <% else %>
+    <%= form_with(model: @postulation, local: true) do |f| %>
+      <% if @postulation.errors.any? %>
+        <div id = 'error_explanation'>
+          <h2>Este comentario no se pudo crear por las siguientes razones</h2>
+          <ul>
+            <% @postulation.errors.full_messages.each do |msg|%>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row d-flex justify-content-center text-center border py-4 rounded px-4">
+        <h2>Postular a este cargo</h2>
+        <div class="col-12 mt-3">
+          <%= f.hidden_field :article_id, value: @article.id %>
+          <%= f.hidden_field :description, value: "Postulación hecha por #{current_client.name}, para el puesto de #{@article.title}" %>
+
+          <div class="mb-3 text-start">
+            <%= f.label :pictures, "ADJUNTOS. Currículum, certificados, etc. (Opcional)", style: "display: block", class:"fw-bold mb-2" %>
+            <%= f.file_field :pictures, multiple: true, class: "form-control" %>
+          </div>
+        </div>
+        
         <div class="col-12">
-            <%= button_to "Eliminar postulación", article_postulation_path(@article, @postulation), method: :delete, class: "btn mybtn px-4 py-2 mt-3" %>
+          <%= f.submit "Postular", class: "btn mybtn px-4 py-2 mt-3" %>
         </div>
-    </div>
-<% else %>
-  <%= form_with(model: @postulation, local: true) do |f| %>
-    <% if @postulation.errors.any? %>
-      <div id = 'error_explanation'>
-        <h2>Este comentario no se pudo crear por las siguientes razones</h2>
-        <ul>
-          <% @postulation.errors.full_messages.each do |msg|%>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
       </div>
+
     <% end %>
-
-    <div class="row d-flex justify-content-center text-center">
-      <h2>Postular a este cargo</h2>
-      <div class="col-12 mt-3">
-        <%= f.hidden_field :article_id, value: @article.id %>
-        <%= f.hidden_field :description, value: "Postulación hecha por #{current_client.name}, para el puesto de #{@article.title}" %>
-
-        <div class="mb-3 text-start">
-          <%= f.label :pictures, "ADJUNTOS. Currículum, certificados, etc. (Opcional)", style: "display: block", class:"fw-bold mb-2" %>
-          <%= f.file_field :pictures, multiple: true, class: "form-control" %>
-        </div>
-      </div>
-      
-      <div class="col-12">
-        <%= f.submit "Postular", class: "btn mybtn px-4 py-2 mt-3" %>
-      </div>
-    </div>
-
   <% end %>
-<% end %>
+<%end%>
