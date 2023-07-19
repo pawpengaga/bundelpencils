@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize_request(kind = nil)
-        unless kind.include?(current_client.role)
-            redirect_to articles_path, notice: "No tiene permiso para hacer esto."
+        unless current_client == false || (current_client && kind.include?(current_client.role))
+          redirect_to articles_path, notice: "No tiene permiso para hacer esto. Consulte con el administrador."
         end
     end
 

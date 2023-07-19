@@ -3,6 +3,11 @@
 class Clients::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action only: [:new, :create] do
+      authorize_request(["admin"])
+  end
+
+
 
   # GET /resource/sign_up
   # def new
@@ -53,10 +58,10 @@ class Clients::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:pfp, :name, :role, :phone]) # , :role
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:pfp, :name, :role, :phone])
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:pfp, :name, :role, :phone]) # , :role
+    devise_parameter_sanitizer.permit(:account_update, keys: [:pfp, :name, :role, :phone])
   end
 end
