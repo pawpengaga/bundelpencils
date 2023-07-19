@@ -21,7 +21,12 @@ class PostulationsController < ApplicationController
   
         respond_to do |format|
             if @postulation.save
-                format.html { redirect_to article_path(@article.id), notice: 'Postulación creada exitosamente'}
+
+                if Rails.env.development?
+                    #PostulationMailer.postulation_email(@postulation).deliver_now #Capacidad de enviar mails temporalme desactivada
+                end
+                format.html { redirect_to article_path(@article.id), notice: 'Postulación creada exitosamente, se notificará al administrador.'}
+
             else
                 format.html { redirect_to article_path(@article.id), notice: 'Hubo un error en la creación de la postulación.'}
             end
