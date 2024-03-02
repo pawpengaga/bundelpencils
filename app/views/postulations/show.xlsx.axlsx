@@ -1,0 +1,29 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  main_header = style.add_style(b: true, sz: 21)
+  project_heading = style.add_style(b: true, sz: 14, alignment:{horizontal: :center})
+  heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Postulación") do |sheet|
+    sheet.add_row ["Postulación para: #{@postulation.article.title}"], style: main_header
+    sheet.merge_cells "A1:D1"
+    # Create the header row
+    sheet.add_row ["Datos de postulación"], style: project_heading
+    sheet.merge_cells "A2:D2"
+    sheet.add_row ["ID", "Descripción"], style: heading
+    sheet.merge_cells "B3:D3"
+    # Create entries for each item
+    sheet.add_row [@postulation.id, @postulation.description]
+    sheet.merge_cells "B4:D4"
+    sheet.add_row ["Datos de postulante"], style: project_heading
+    sheet.merge_cells "A5:D5"
+    sheet.add_row ["Foto", "Nombre completo", "Correo electrónico", "Número telefónico"], style: heading
+    sheet.column_widths 2, 2, 3, 2
+
+    sheet.add_row [@postulation.client.pfp, @postulation.client.name, @postulation.client.email, @postulation.client.phone.present? ? number_to_phone(@postulation.client.phone) : "-NO PRESENTA-"]
+
+    sheet.add_row ["¿Presenta adjuntos? #{@postulation.pictures.present? ? "SI" : "NO"}"]
+    #end
+  end
+end

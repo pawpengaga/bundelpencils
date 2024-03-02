@@ -80,3 +80,10 @@ gem "faker", "~> 3.2"
 gem "activestorage", "~> 7.0"
 
 gem "aws-sdk-s3", "~> 1.130"
+
+#gem "caxlsx", "~> 4.1"
+
+gem 'rubyzip'
+
+gem 'axlsx'
+gem 'axlsx_rails'

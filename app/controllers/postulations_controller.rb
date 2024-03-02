@@ -1,27 +1,35 @@
 class PostulationsController < ApplicationController
     before_action :set_postulation, only: %i[ show edit update destroy ]
 
-      
+
     def index
         @client = Client.find(params[:client_id])
         @postulations = @client.postulations
     end
 
     def show
+        @postulation = Postulation.find(params[:id])
+        respond_to do |format|
+            format.xlsx {
+                response.headers['Content-Disposition'] = "attachment; filename=#{controller_name.capitalize}.xlsx"
+              }
+              format.html { render :show }
+        end
+
     end
-  
+
     def create
         @article = Article.find(params[:postulation][:article_id])
-        
+
         @postulation = Postulation.new(postulation_params)
         @postulation.client = current_client
-  
+
         # if client_signed_in?
         #     @comment.client.id = current_client.id
         # else
         #     @comment.client_id = 2
         # end
-  
+
         respond_to do |format|
             if @postulation.save
 
@@ -35,14 +43,14 @@ class PostulationsController < ApplicationController
             end
         end
     end
-  
+
     def destroy
         @article = Article.find(params[:article_id])
         @postulation = @article.postulations.find(params[:id])
         @postulation.destroy
         redirect_to article_path(@article), notice: 'Postulación eliminada'
       end
-      
+
 
     private
 
