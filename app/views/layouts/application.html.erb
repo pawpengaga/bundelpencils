@@ -16,21 +16,28 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-controller="main">
 
       <% if client_signed_in? %>
         <%= render "mycomponents/mynav" %>
       <%else%>
         <%= render "mycomponents/alernav" %>
       <% end %>
-      <div id="mycontainer" class="mt-4 mb-5">
 
+      <% if client_signed_in? %>
+        <%= link_to '#', id: "toggler", class: "px-2 py-2 ms-auto mt-2", data: { action: "click->main#toggle" } do %>
+          <i id="icon" class="fa-solid fa-angles-left"></i>
+          <%= image_tag current_client.pfp, class: "rounded-circle" %>
+        <% end %>
+      <%end%>
+
+      <div id="mycontainer" class="mt-4 mb-5">
         <% if client_signed_in? %>
           <div class="row mt-5">
-            <div class="col-10 pe-5">
+            <div class="col-12 pe-5" id="mainframe">
               <%= yield %>
             </div>
-            <div class="col-2 border-start">
+            <div class="border-start hidden" id="sidebar">
               <% if current_client.role == 'admin' %>
                 <%= render "mycomponents/myadminbar" %>
               <%else%>

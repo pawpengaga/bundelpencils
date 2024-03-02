@@ -93,3 +93,63 @@ a:hover{
     background-color: var(--seccon);
     padding-top: 0.25rem;
 }
+
+/* ############################################# */
+
+#toggler{
+    color:rgb(41, 41, 41);
+    border-radius: 2rem 0rem 0rem 2rem;
+    background-color: transparent;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    outline: 1px solid rgb(41, 41, 41);
+    transition: all 0.5s ease, color 0.3s ease;
+}
+
+#toggler:active,
+#toggler:hover{
+    background-color:rgb(41, 41, 41);
+    color: white;
+    outline: transparent;
+}
+
+#toggler img{
+    margin-left: .5rem;
+    width: 2.5rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.fade{
+    animation: fade 1s ease-in-out forwards;
+}
+
+.appear{
+    animation: appearAnimation 1s ease-in-out forwards;
+}
+
+@keyframes appearAnimation {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

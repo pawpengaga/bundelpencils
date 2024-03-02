@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @postulations = @article.postulations
-    
+
     if Postulation.exists?(article: @article, client: current_client)
       @postulation = Postulation.find_by(article: @article, client: current_client)
       @postulation_exists = true
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
       @postulation_exists = false
     end
   end
-  
+
   # GET /articles/new
   def new
     @article = Article.new
