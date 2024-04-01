@@ -11,7 +11,7 @@
 admin_user = Client.create!(email: 'esteban@admin.com', password: 'admin123', name: "Esteban admin", phone: 666444333, role: 1) #
 admin_user.pfp.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'admin-avatar.png')), filename: 'admin-avatar.png', content_type: 'image/png')
 
-Article.create(
+Article.create!(
   title: "Gerente de Marketing",
   description: "Como Gerente de Marketing en nuestra empresa, serás responsable de liderar y ejecutar estrategias de marketing que impulsen el crecimiento de la marca y maximicen la participación en el mercado. Tu objetivo será desarrollar y supervisar campañas de marketing integrales, gestionar el equipo de marketing y colaborar estrechamente con otros departamentos para asegurar la coherencia de la marca en todos los canales.",
   requirements: "Experiencia previa de al menos 5 años en roles de marketing, preferiblemente en la industria de productos de consumo. Conocimientos sólidos en estrategias de marketing digital, incluyendo SEO, SEM y redes sociales. Habilidades comprobadas en gestión de equipos y liderazgo. Excelentes habilidades de comunicación y capacidad para trabajar de manera efectiva en un entorno colaborativo. Titulación universitaria en Marketing, Publicidad, Administración de Empresas o campo relacionado.",
@@ -19,7 +19,7 @@ Article.create(
   client_id: 1
 )
 
-Article.create(
+Article.create!(
   title: "Diseñador Gráfico",
   description: "Como Diseñador Gráfico, serás responsable de crear diseños innovadores y atractivos para nuestros productos y campañas de marketing. Trabajarás en estrecha colaboración con el equipo de marketing y de producto para desarrollar materiales visuales que reflejen la identidad de la marca y atraigan a nuestro público objetivo.",
   requirements: "Experiencia demostrable como diseñador gráfico, preferiblemente en la industria de productos de consumo.
@@ -30,7 +30,7 @@ Article.create(
   profit: 1800000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Ejecutivo de Ventas",
   description: "Como Ejecutivo de Ventas, serás responsable de gestionar y desarrollar relaciones comerciales con clientes existentes y potenciales. Tu objetivo será impulsar las ventas de nuestros productos, identificar nuevas oportunidades de negocio y asegurar la satisfacción del cliente.",
   requirements: "Experiencia previa en ventas, preferiblemente en la industria de productos de consumo.
@@ -41,7 +41,7 @@ Article.create(
   profit: 2000000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Ingeniero de Desarrollo de Productos",
   description: "Como Ingeniero de Desarrollo de Productos, serás responsable de liderar el proceso de desarrollo y lanzamiento de nuevos productos. Trabajarás en estrecha colaboración con el equipo de investigación y desarrollo para llevar ideas desde la conceptualización hasta la producción, asegurando la calidad y la innovación en todos los aspectos.",
   requirements: "Titulación universitaria en Ingeniería Industrial, Ingeniería de Productos o campo relacionado.
@@ -52,7 +52,7 @@ Article.create(
   profit: 2300000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Especialista en Control de Calidad",
   description: "Como Especialista en Control de Calidad, serás responsable de garantizar la calidad y la integridad de nuestros productos. Tu objetivo será implementar y mantener estándares de calidad, realizar inspecciones de productos y colaborar con el equipo de producción para resolver problemas de calidad.",
   requirements: "Experiencia previa en control de calidad, preferiblemente en la industria de productos de consumo.
@@ -63,7 +63,7 @@ Article.create(
   profit: 1900000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Coordinador de Logística y Distribución",
   description: "Como Coordinador de Logística y Distribución, serás responsable de coordinar las actividades de distribución y logística de nuestros productos. Gestionarás el inventario, supervisarás los procesos de envío y recepción, y garantizarás la eficiencia y precisión en todas las operaciones de logística.",
   requirements: "Experiencia previa en logística y distribución, preferiblemente en la industria de productos de consumo.
@@ -74,7 +74,7 @@ Article.create(
   profit: 2100000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Operario de Producción",
   description: "Como Operario de Producción, serás responsable de realizar tareas de producción y ensamblaje en nuestra línea de fabricación de lápices. Tu trabajo consistirá en operar maquinaria y equipos, seguir instrucciones de producción y asegurar la calidad y eficiencia en el proceso de fabricación.",
   requirements: "Experiencia previa en roles de producción o manufactura, preferiblemente en la industria de productos de consumo.
@@ -85,7 +85,7 @@ Article.create(
   profit: 600000,
   client_id: 1
 )
-Article.create(
+Article.create!(
   title: "Inspector de Calidad de Productos",
   description: "Como Inspector de Calidad de Productos, serás responsable de realizar inspecciones visuales y funcionales en los productos fabricados para garantizar que cumplan con los estándares de calidad establecidos. Tu trabajo incluirá la identificación y documentación de defectos, así como la colaboración con el equipo de producción para resolver problemas de calidad.",
   requirements: "Experiencia previa en control de calidad o inspección de productos, preferiblemente en la industria de manufactura.
